@@ -1,6 +1,8 @@
 ## About the project
 
-Solidity counter
+Solidity counter:
+The goal of this project is to realize a counter system based on the
+Ethereum blockchain.
 
 Deployed on netlify at :
 
