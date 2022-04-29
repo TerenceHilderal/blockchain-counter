@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import toast from 'react-hot-toast';
 
-import Counter from '../../artifacts/contracts/Counter.sol/Counter.json';
+import Counter from './Counter.json';
 
 const counterAdress: string = '0xf3c86cDF1B3b87e2ec68649F7498C3d867Fc78c0';
 
