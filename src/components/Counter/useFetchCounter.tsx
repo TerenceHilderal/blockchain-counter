@@ -26,7 +26,7 @@ const useFetchCounter = () => {
 				provider,
 			);
 			try {
-				const currentCounter = await contract.getCounter();
+				const currentCounter: number = await contract.getCounter();
 				setCounter(currentCounter);
 			} catch (error: any) {
 				toast.error('Sorry, something went wrong, please try again later.');

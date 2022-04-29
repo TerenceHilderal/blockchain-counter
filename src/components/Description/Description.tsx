@@ -8,21 +8,21 @@ const Description: React.FC = () => {
 			<div className='description'>
 				<h1>Project's Goal</h1>
 				<p>
-					Le but de ce projet est de de réaliser un système de compteur basé sur
-					la blockchain. Vous trouverez ci-dessous le compteur, celui-ci est
-					composé de deux boutons:
+					The goal of this project is to realize a counter system based on the
+					blockchain. You will find below the counter, this one is composed of
+					two buttons:
 				</p>
 
 				<ul>
-					<li>Increase : qui permettra d'ajouter 1 au compteur </li>
-					<li>Decrease : qui permettra de soustraire 1 au compteur</li>
+					<li>Increase: which will add 1 to the counter </li>
+					<li>Decrease: which will subtract 1 from the counter</li>
 				</ul>
 
 				<p>
-					L'état du compteur et les méthodes utilisées pour incrémenter et
-					décrementer sont pris en charge par un smart contract qui a été
-					déployé sur le réseau test <b>Ropsten</b>.<br /> J'ai choisi la
-					blockchain de l'ethereum et la stack suivante :
+					The state of the counter and the methods used to increment and
+					decrement are supported by a smart contract that has been deployed on
+					the <b> Ropsten</b> testnet.
+					<br /> I chose the ethereum blockchain and the following stack:
 				</p>
 
 				<ul>
