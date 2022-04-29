@@ -1,0 +1,84 @@
+.counter_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top:-1rem;
+}
+
+.counter_title{
+  color: #fff;
+}
+
+.counter {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.counter_buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 5rem;
+}
+
+.increment_button {
+  width: 100%;
+  background-color:#FECB5B;
+  border-radius: 2rem;
+  border-color:#352A66 ;
+  text-transform: uppercase;
+  color: #352A66;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  padding:1.2rem;
+}
+
+.increment_button:hover {
+    background-color: #f378f3;
+}
+
+.decrement_button {
+width: 100%;
+border-radius: 2rem;
+background-color:#352A66;
+border-color: #fff;
+color: #fff;
+font-size: 20px;
+font-weight: bold;
+text-transform: uppercase;
+cursor: pointer;
+margin-bottom: 0.5rem;
+padding:1.2rem;
+}
+
+.decrement_button:hover {
+  background-color: #FECB5B;
+  color:#352A66
+}
+
+
+@media (min-width: 768px) {
+  .counter_buttons {
+   flex-direction: row-reverse;
+   width: 100%;
+   justify-content: space-evenly;
+  }
+
+  .counter_title {
+    font-size: 1.3rem;
+  }
+
+  .increment_button {
+    width: 20%;
+  }
+
+  .decrement_button {
+    width: 20%;
+  }
+
+ }

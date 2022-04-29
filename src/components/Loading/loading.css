@@ -1,0 +1,59 @@
+.loading_container {
+width: 100%;
+
+}
+
+.loading_gif {
+  display: flex;
+  justify-content: center;
+}
+
+.loading_gif > img{
+  width: 30%;
+}
+
+.loading_text {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.dot {
+  animation: loading 2s ease-in-out infinite;
+}
+
+.dot1 {
+  animation: loading 2s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.dot2 {
+  animation: loading 2s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    -webkit-transform: rotate(5deg);
+  }
+
+  50% {
+    -webkit-transform-origin: center;
+  }
+
+  100% {
+    -webkit-transform: rotate(-5deg);
+  }
+}

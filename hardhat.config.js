@@ -23,14 +23,12 @@ module.exports = {
 		artifacts: './src/artifacts',
 	},
 	networks: {
-		// rinkeby: {
-		// 	url: 'https://rinkeby.infura.io/v3/5d7ff94a3ee24e4aa09303a4a9035493',
-		// 	accounts: [
-		// 		'0xdf57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e',
-		// 	],
-		// },
-		hardhat: {
-			chainId: 1337,
+		ropsten: {
+			url: 'https://ropsten.infura.io/v3/5d7ff94a3ee24e4aa09303a4a9035493',
+			accounts: [process.env.PRIVATE_KEY_METAMASK],
 		},
+		// hardhat: {
+		// 	chainId: 1337,
+		// },
 	},
 };

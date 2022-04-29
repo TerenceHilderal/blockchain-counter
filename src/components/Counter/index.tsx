@@ -1,24 +1,33 @@
-import useFetchCounter from './useFetchCounter';
-import './style.css';
+import toast, { Toaster } from 'react-hot-toast';
 
-const Counter = () => {
-	const { counter, incrementByOne, decrementByOne } = useFetchCounter();
+import useFetchCounter from './useFetchCounter';
+import Loading from '../Loading/Loading';
+import './counter.css';
+
+const Counter: React.FC = () => {
+	const { counter, incrementByOne, decrementByOne, loading } =
+		useFetchCounter();
 
 	return (
-		<div className='counter_container'>
-			<div className='counter_title'>
-				<h1>The famous counter</h1>
+		<>
+			<div data-testid='counter_container' className='counter_container'>
+				<div className='counter_title'>
+					<h1>Counter</h1>
+				</div>
+				<Toaster />
+				<div className='counter'>
+					{loading ? <Loading /> : <p>{Number(counter)}</p>}
+				</div>
+				<div className='counter_buttons'>
+					<button className='increment_button' onClick={incrementByOne}>
+						Increase{' '}
+					</button>
+					<button className='decrement_button' onClick={decrementByOne}>
+						Decrease{' '}
+					</button>
+				</div>
 			</div>
-			<p className='counter'>{Number(counter)}</p>
-			<div className='counter_buttons'>
-				<button className='increment_button' onClick={incrementByOne}>
-					Increment{' '}
-				</button>
-				<button className='decrement_button' onClick={decrementByOne}>
-					Decrement{' '}
-				</button>
-			</div>
-		</div>
+		</>
 	);
 };
 

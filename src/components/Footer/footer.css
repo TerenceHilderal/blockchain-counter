@@ -1,0 +1,27 @@
+.footer{
+  display: flex;
+  justify-content: space-around;
+  color: #fff;
+  height:70px;
+  border-top: 1px solid #fff
+}
+
+.footer_list{
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.footer_list > li{
+  margin: 1rem;
+}
+
+
+.links{
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover{
+  color:#f378f3
+}
