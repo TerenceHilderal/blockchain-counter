@@ -51,7 +51,7 @@ const useFetchCounter = () => {
 			toast.success('Counter incremented by one');
 			setLoading(false);
 		} catch (error: any) {
-			toast.error('Sorry, something went wrong, you have insufficient funds');
+			toast.error('Sorry, something went wrong, please try again later.');
 		}
 	};
 
