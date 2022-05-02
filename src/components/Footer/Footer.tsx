@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
 						target='_blank'
 						rel='noreferrer'
 					>
-						Le lien Github du projet{' '}
+						Github's link{' '}
 					</a>
 				</li>
 				<li>
@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
 						target='_blank'
 						rel='noreferrer'
 					>
-						Mon profil LinkedIn
+						Linkedin Profile
 					</a>
 				</li>
 			</ul>
