@@ -20,11 +20,7 @@ const useWalletConnection = () => {
 			if (accounts[0]) {
 				setWalletConnected(true);
 				return toast.success('Successfully connected to your wallet');
-			}
-		});
-
-		window.ethereum.on('accountsChanged', (accounts: string[]) => {
-			if (accounts.length === 0) {
+			} else {
 				setWalletConnected(false);
 				return toast.success('Successfully disconnected to your wallet');
 			}

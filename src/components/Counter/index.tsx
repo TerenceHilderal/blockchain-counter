@@ -22,6 +22,7 @@ const Counter: React.FC<Props> = ({ allowInteractionWithCounter }) => {
 				<div className='counter'>
 					{loading ? <Loading /> : <p>{counter}</p>}
 				</div>
+
 				{allowInteractionWithCounter && (
 					<div className='counter_buttons'>
 						<button className='increment_button' onClick={incrementByOne}>

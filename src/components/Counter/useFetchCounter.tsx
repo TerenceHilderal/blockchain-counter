@@ -53,12 +53,6 @@ const useFetchCounter = () => {
 	};
 
 	const decrementByOne = async () => {
-		// await window.ethereum.request({
-		// 	method: 'eth_requestAccounts',
-		// });
-
-		// const provider = new ethers.providers.Web3Provider(window.ethereum);
-		// const signer = provider.getSigner();
 		const contract = new ethers.Contract(counterAdress, Counter.abi, signer);
 
 		try {

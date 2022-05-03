@@ -1,4 +1,3 @@
-// import Counter from './artifacts/contracts/Counter.sol/Counter.json';
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
@@ -14,7 +13,6 @@ import useWalletConnection from './utils/useWalletConnection';
 const App: React.FC = () => {
 	const [allowInteractionWithCounter, setAllowInteractionWithCounter] =
 		useState<boolean>(true);
-	// const [walletConnected, setWalletConnected] = useState<boolean>(false);
 	const { walletConnected, isAwalletAlreadyConnected } = useWalletConnection();
 
 	const hexadecimalToDecimal = (hexString: string) => {
@@ -25,11 +23,9 @@ const App: React.FC = () => {
 		ethers.providers.getNetwork('ropsten').chainId;
 
 	useEffect(() => {
-		const initial = async () => {
-			// When user connected for 1st time
+		const initApp = async () => {
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
 			const chain = await provider.getNetwork();
-			console.log(chain);
 
 			if (chain.chainId !== ropstenProviderChainId) {
 				setAllowInteractionWithCounter(false);
@@ -58,35 +54,9 @@ const App: React.FC = () => {
 			}
 		});
 
-		initial();
+		initApp();
 		isAwalletAlreadyConnected();
 	}, []);
-
-	// useEffect(() => {
-	// 	const provider = new ethers.providers.Web3Provider(window.ethereum);
-	// 	const isAwalletAlreadyConnected = async () => {
-	// 		const accounts = await provider.listAccounts();
-
-	// 		accounts.length !== 0
-	// 			? setWalletConnected(true)
-	// 			: setWalletConnected(false);
-	// 	};
-	// 	isAwalletAlreadyConnected();
-	// }, []);
-
-	// window.ethereum.on('accountsChanged', (accounts: string[]) => {
-	// 	if (accounts[0]) {
-	// 		setWalletConnected(true);
-	// 		return toast.success('Successfully connected to your wallet');
-	// 	}
-	// });
-
-	// window.ethereum.on('accountsChanged', (accounts: string[]) => {
-	// 	if (accounts.length === 0) {
-	// 		setWalletConnected(false);
-	// 		return toast.success('Successfully disconnected to your wallet');
-	// 	}
-	// });
 
 	const connectWallet = () => {
 		window.ethereum.request({
