@@ -61,6 +61,22 @@ padding:1.2rem;
   color:#352A66
 }
 
+.decrement_button_disabled{
+  width: 100%;
+  border-radius: 2rem;
+  background-color: #cccccc;
+  border-color: #fff;
+  color: #666666;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  padding: 1.2rem;
+  cursor:not-allowed
+}
+
+
 
 @media (min-width: 768px) {
   .counter_buttons {
@@ -78,6 +94,9 @@ padding:1.2rem;
   }
 
   .decrement_button {
+    width: 20%;
+  }
+  .decrement_button_disabled{
     width: 20%;
   }
 

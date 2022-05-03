@@ -4,7 +4,11 @@ import useFetchCounter from './useFetchCounter';
 import Loading from '../Loading/Loading';
 import './counter.css';
 
-const Counter: React.FC = () => {
+interface Props {
+	allowInteractionWithCounter: boolean;
+}
+
+const Counter: React.FC<Props> = ({ allowInteractionWithCounter }) => {
 	const { counter, incrementByOne, decrementByOne, loading } =
 		useFetchCounter();
 
@@ -16,16 +20,31 @@ const Counter: React.FC = () => {
 				</div>
 				<Toaster />
 				<div className='counter'>
-					{loading ? <Loading /> : <p>{Number(counter)}</p>}
+					{loading ? <Loading /> : <p>{counter}</p>}
 				</div>
-				<div className='counter_buttons'>
-					<button className='increment_button' onClick={incrementByOne}>
-						Increase{' '}
-					</button>
-					<button className='decrement_button' onClick={decrementByOne}>
-						Decrease{' '}
-					</button>
-				</div>
+				{allowInteractionWithCounter && (
+					<div className='counter_buttons'>
+						<button className='increment_button' onClick={incrementByOne}>
+							Increase{' '}
+						</button>
+						<button
+							className={
+								counter === 0 ? `decrement_button_disabled` : 'decrement_button'
+							}
+							{...(counter === 0
+								? {
+										onClick: () =>
+											toast.error(
+												'Sorry, the counter can not be negatively decrease',
+												{ duration: 7000 },
+											),
+								  }
+								: { onClick: () => decrementByOne() })}
+						>
+							Decrease{' '}
+						</button>
+					</div>
+				)}
 			</div>
 		</>
 	);
