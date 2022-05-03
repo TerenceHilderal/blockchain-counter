@@ -30,6 +30,13 @@ const Description: React.FC = () => {
 						<li key={index}>{stackItem}</li>
 					))}
 				</ul>
+				<span>
+					{' '}
+					<i>
+						N.B: You will not be able to use this application if you are not
+						connected to the ropsten network
+					</i>{' '}
+				</span>
 			</div>
 
 			<div className='description_img'>
