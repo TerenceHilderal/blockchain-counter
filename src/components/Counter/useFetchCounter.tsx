@@ -4,6 +4,7 @@ import { ethers } from 'ethers';
 import toast from 'react-hot-toast';
 
 import Counter from './Counter.json';
+import { handleError } from '../../utils/handleError';
 
 const counterAdress: string = '0xf3c86cDF1B3b87e2ec68649F7498C3d867Fc78c0';
 
@@ -11,36 +12,32 @@ const useFetchCounter = () => {
 	const [counter, setCounter] = useState<number>(0);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const hexadecimalToDecimal = (hexString: any) => {
+		return parseInt(hexString, 16);
+	};
+
+	const provider = new ethers.providers.Web3Provider(window.ethereum);
+	const contract = new ethers.Contract(counterAdress, Counter.abi, provider);
+	const signer = provider.getSigner();
+
 	useEffect(() => {
 		fetchCounterFromContract();
 	}, []);
 
 	const fetchCounterFromContract = async () => {
-		//@ts-ignore
 		if (typeof window.ethereum !== 'undefined') {
-			//@ts-ignore
-			const provider = new ethers.providers.Web3Provider(window.ethereum);
-			const contract = new ethers.Contract(
-				counterAdress,
-				Counter.abi,
-				provider,
-			);
 			try {
 				const currentCounter: number = await contract.getCounter();
-				setCounter(currentCounter);
+				currentCounter >= 0
+					? setCounter(hexadecimalToDecimal(currentCounter))
+					: toast.error('Counter can not be negative');
 			} catch (error: any) {
-				toast.error('Sorry, something went wrong, please try again later.');
+				handleError(error);
 			}
 		}
 	};
 
 	const incrementByOne = async () => {
-		await window.ethereum.request({
-			method: 'eth_requestAccounts',
-		});
-
-		const provider = new ethers.providers.Web3Provider(window.ethereum);
-		const signer = provider.getSigner();
 		const contract = new ethers.Contract(counterAdress, Counter.abi, signer);
 
 		try {
@@ -51,17 +48,17 @@ const useFetchCounter = () => {
 			toast.success('Counter incremented by one');
 			setLoading(false);
 		} catch (error: any) {
-			toast.error('Sorry, something went wrong, please try again later.');
+			handleError(error);
 		}
 	};
 
 	const decrementByOne = async () => {
-		await window.ethereum.request({
-			method: 'eth_requestAccounts',
-		});
+		// await window.ethereum.request({
+		// 	method: 'eth_requestAccounts',
+		// });
 
-		const provider = new ethers.providers.Web3Provider(window.ethereum);
-		const signer = provider.getSigner();
+		// const provider = new ethers.providers.Web3Provider(window.ethereum);
+		// const signer = provider.getSigner();
 		const contract = new ethers.Contract(counterAdress, Counter.abi, signer);
 
 		try {
@@ -71,10 +68,11 @@ const useFetchCounter = () => {
 			fetchCounterFromContract();
 			toast.success('Counter decremented by one');
 			setLoading(false);
-		} catch (error) {
-			toast.error('Sorry, something went wrong, please try again later.');
+		} catch (error: any) {
+			handleError(error);
 		}
 	};
+
 	return {
 		loading,
 		counter,
